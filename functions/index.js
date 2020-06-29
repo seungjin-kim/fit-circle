@@ -20,7 +20,6 @@ app.get("/screams", (req, res) => {
     .get()
     .then((data) => {
       let screams = [];
-      console.log("Look here", data);
       data.forEach((doc) => {
         screams.push({
           screamId: doc.id,
