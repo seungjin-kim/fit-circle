@@ -2,15 +2,21 @@ const functions = require("firebase-functions");
 
 // const admin = require('firebase-admin');
 // admin.initializeApp();
-var admin = require("firebase-admin");
-var serviceAccount = require("./serviceAccountKey.json");
+const admin = require("firebase-admin");
+const serviceAccount = require("./serviceAccountKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://fitcircle-97015.firebaseio.com",
 });
 
-const express = require("express");
+const express = require('express');
 const app = express();
+
+const user = require("./config.js");
+const firebase = require('firebase');
+firebase.initializeApp(user.firebaseConfig);
+
+
 
 app.get("/screams", (req, res) => {
   admin
